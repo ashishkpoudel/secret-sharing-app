@@ -35,5 +35,6 @@ lerna-debug.log*
 
 # app
 .env
+tsconfig.tsbuildinfo
 tsconfig.build.tsbuildinfo
 
