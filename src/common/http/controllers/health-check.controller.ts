@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-export const index = (req: Request, res: Response) => {
+export const index = (_req, res: Response) => {
   res.send('Health check passed');
 };

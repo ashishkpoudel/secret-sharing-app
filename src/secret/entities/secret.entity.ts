@@ -8,6 +8,12 @@ export class SecretEntity {
   @Column({ type: 'text' })
   public readonly body: string;
 
+  @Column({ type: 'varchar', nullable: true })
+  public readonly password: string | null;
+
+  @Column({ type: 'interval' })
+  public readonly expiresIn: string;
+
   @CreateDateColumn()
   public readonly createdAt: Date;
 

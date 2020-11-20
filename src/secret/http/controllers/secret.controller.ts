@@ -8,6 +8,8 @@ export const postSecret = async (req: Request, res: Response) => {
   await createSecret({
     id: id,
     body: 'this is a body',
+    password: 'this is my password',
+    expiresIn: '3 hours 2 minutes 1 second',
   });
 
   res.json(await getSecretById(id));
