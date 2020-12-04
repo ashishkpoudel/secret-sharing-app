@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm';
 import { SecretEntity } from 'secret/entities/secret.entity';
 
-export const getSecretById = async (id: string): Promise<SecretEntity | undefined> => {
+export const findSecretById = async (id: string): Promise<SecretEntity> => {
   return getRepository(SecretEntity)
-    .findOne({
+    .findOneOrFail({
       where: {
         id,
       },

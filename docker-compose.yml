@@ -3,14 +3,15 @@ version: "3.8"
 services:
   api:
     build:
-      context: ./
+      context: ./api
       dockerfile: Dockerfile
       target: development
     volumes:
-      - "./:/var/www"
+      - "./api:/var/www"
     depends_on:
       - postgres
     environment:
+      - API_URL=${API_URL}
       - PORT=${PORT}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}

@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { URL } from 'url';
 
-@Entity('secret')
+@Entity('secrets')
 export class SecretEntity {
   @PrimaryGeneratedColumn('uuid')
   public readonly id: string;
@@ -19,4 +20,8 @@ export class SecretEntity {
 
   @UpdateDateColumn()
   public readonly updatedAt: Date;
+
+  getSharingLink(baseUrl: string): string {
+    return new URL(`/secrets/${this.id}`, baseUrl).toString();
+  }
 }
