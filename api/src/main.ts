@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import 'reflect-metadata';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import handlebars from 'express-handlebars';
 
 import appConfig from 'config/app';
 import { dbConnection } from 'database';
@@ -21,8 +20,6 @@ const app = express();
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.engine('handlebars', handlebars());
-app.set('view engine', 'handlebars');
 dotenv.config({ path: '.env' });
 
 /**
