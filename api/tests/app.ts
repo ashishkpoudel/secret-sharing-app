@@ -1,7 +1,6 @@
-import appConfig from 'config/app';
 import { dbConnection } from 'database';
 import app from 'app';
 
-app.listen(appConfig.port, async () => {
+export default app.listen(1234, async () => {
   await dbConnection();
 });

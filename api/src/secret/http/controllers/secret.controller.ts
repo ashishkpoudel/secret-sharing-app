@@ -14,9 +14,5 @@ export const postSecret = async (req: Request, res: Response) => {
   });
 
   const secret = await findSecretById(id);
-  res.render('home', {
-    secret: {
-      link: secret.getSharingLink(appConfig.url),
-    },
-  });
+  res.json(secret);
 };
