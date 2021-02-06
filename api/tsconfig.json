@@ -10,10 +10,11 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": "src",
+    "rootDir": ".",
     "incremental": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "strictNullChecks": true
+    "strictNullChecks": true,
   },
   "exclude": ["node_modules", "dist"]
 }

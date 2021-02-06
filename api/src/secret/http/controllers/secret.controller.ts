@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { v4 as uuid4 } from 'uuid';
-import appConfig from 'config/app';
 import { createSecret } from 'secret/commands/create-secret';
 import { findSecretById } from 'secret/queries/find-secret-by-id';
 

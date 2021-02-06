@@ -2,6 +2,7 @@
   "moduleFileExtensions": ["js", "json", "ts"],
   "moduleDirectories": ["node_modules", "src"],
   "rootDir": ".",
+  "modulePaths": ["../../src"],
   "testEnvironment": "node",
   "testRegex": ".spec.ts$",
   "transform": {

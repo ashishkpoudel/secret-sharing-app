@@ -1,9 +1,19 @@
 import request from 'supertest';
-import app from '../app';
+import { AppFactory } from '../factory/app';
 
 describe('Health check e2e', () => {
-  it('GET /health-check returns 200 ok', async () => {
-    await request(app)
+  let app: AppFactory;
+
+  beforeAll(async () => {
+    app = await AppFactory.new();
+  });
+
+  afterEach(async () => {
+    await app.refreshDatabase();
+  });
+
+  it('GET /health-check returns 200 ok', () => {
+    return request(app.instance)
       .get('/health-check')
       .send()
       .expect(200);
@@ -11,5 +21,5 @@ describe('Health check e2e', () => {
 
   afterAll(async () => {
     await app.close();
-  });
+  })
 });
