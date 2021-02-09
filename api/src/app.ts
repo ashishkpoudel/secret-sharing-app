@@ -3,12 +3,12 @@ import 'reflect-metadata';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-import { globalErrorHandler } from 'core/http/middlewares/global-error-handler';
-import { validateRequest } from 'core/http/middlewares/validate-request';
-import { validationErrorHandler } from 'core/http/middlewares/validation-error-handler';
-import * as healthCheckController from 'common/http/controllers/health-check.controller';
-import * as secretController from 'secret/http/controllers/secret.controller';
-import { SecretRequest } from 'secret/http/requests/secret.request';
+import { globalErrorHandler } from 'common/infrastructure/express/middlewares/global-error-handler';
+import { validateRequest } from 'common/infrastructure/express/middlewares/validate-request';
+import { validationErrorHandler } from 'common/infrastructure/express/middlewares/validation-error-handler';
+import * as healthCheckController from 'common/infrastructure/express/controllers/health-check.controller';
+import * as secretController from 'secret/infrastructure/express/controllers/secret.controller';
+import { SecretRequest } from 'secret/infrastructure/express/requests/secret.request';
 
 const app = express();
 
