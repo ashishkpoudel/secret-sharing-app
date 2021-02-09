@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { v4 as uuid4 } from 'uuid';
 import { createSecretService } from 'secret/application/create-secret';
-import { CreateSecretCommand } from 'secret/application/create-secret/create-secret.command';
+import { CreateSecret } from 'secret/application/create-secret/create-secret';
 import { getSecret } from 'secret/application';
 
 export const postSecret = async (req: Request, res: Response) => {
   const id = uuid4();
-  const command = new CreateSecretCommand({
+  const command = new CreateSecret({
     id,
     body: 'this is a body',
     password: 'secretSauce',
