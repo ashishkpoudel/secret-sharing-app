@@ -3,12 +3,10 @@ import 'reflect-metadata';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-import { globalErrorHandler } from 'common/infrastructure/express/middlewares/global-error-handler';
-import { validateRequest } from 'common/infrastructure/express/middlewares/validate-request';
-import { validationErrorHandler } from 'common/infrastructure/express/middlewares/validation-error-handler';
-import * as healthCheckController from 'common/infrastructure/express/controllers/health-check.controller';
-import * as secretController from 'secret/infrastructure/express/controllers/secret.controller';
-import { SecretRequest } from 'secret/infrastructure/express/requests/secret.request';
+import { globalErrorHandler } from 'common/infrastructure/express/middleware/global-error-handler';
+import { validationErrorHandler } from 'common/infrastructure/express/middleware/validation-error-handler';
+import { commonRouter } from 'common/infrastructure/express/route';
+import { secretRouter } from 'secret/infrastructure/express/route';
 
 const app = express();
 
@@ -22,8 +20,8 @@ dotenv.config({ path: '.env' });
 /**
  * App routes.
  */
-app.get('/health-check', healthCheckController.index);
-app.post('/secrets', validateRequest(SecretRequest), secretController.postSecret);
+app.use(commonRouter);
+app.use(secretRouter);
 
 /**
  * Register middlewares.
