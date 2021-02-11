@@ -3,7 +3,7 @@ import { TypeormSecretEntity as SecretEntity } from 'secret/infrastructure/typeo
 
 export class SecretMapper {
   public static toDomain(raw: any): SecretModel {
-    return new SecretModel({
+    return SecretModel.fromState({
       id: raw.id,
       body: raw.body,
       password: raw.password,

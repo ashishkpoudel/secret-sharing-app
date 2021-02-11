@@ -4,20 +4,22 @@ import { SecretRepository } from 'secret/domain/repository/secret.repository';
 import { CreateSecret } from 'secret/application/create-secret/create-secret';
 
 export class CreateSecretService {
-  constructor(
-    private readonly secretRepository: SecretRepository,
-  ) { }
+  private readonly secretRepository: SecretRepository;
+
+  constructor(secretRepository: SecretRepository) {
+    this.secretRepository = secretRepository;
+  }
 
   public async execute(data: CreateSecret): Promise<void> {
-    const secret = new Secret({
+    const secret = Secret.create({
       id: data.id,
       body: data.body,
-      password: data.password
-        ? await bcryptService.hash(data.password)
-        : null,
+      password: data.password ? await bcryptService.hash(data.password) : null,
       expiresIn: data.expiresIn,
     });
 
     await this.secretRepository.save(secret);
+
+    secret.releaseEvents() // TODO: Dispatch Events
   }
 }

@@ -10,7 +10,7 @@ export const postSecret = async (req: Request, res: Response) => {
     id,
     body: 'this is a body',
     password: 'secretSauce',
-    expiresIn: '3 hours 2 minutes 1 second',
+    expiresIn: '03:02:01',
   });
 
   await createSecretService.execute(command);
