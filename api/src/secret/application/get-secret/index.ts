@@ -1,5 +1,5 @@
-import { TypeormGetSecretRepository } from 'secret/infrastructure/typeorm/repository/typeorm-get-secret.repository';
+import { KnexGetSecretRepository } from 'secret/infrastructure/knex/repository/knex-get-secret.repository';
 
-const getSecret = new TypeormGetSecretRepository();
+const getSecret = new KnexGetSecretRepository();
 
 export { getSecret };

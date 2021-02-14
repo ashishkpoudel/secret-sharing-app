@@ -1,5 +1,5 @@
-import { TypeormSecretRepository } from 'secret/infrastructure/typeorm/repository/typeorm-secret.repository';
+import { KnexSecretRepository } from 'secret/infrastructure/knex/repository/knex-secret.repository';
 
-const secretRepository = new TypeormSecretRepository();
+const secretRepository = new KnexSecretRepository();
 
 export { secretRepository };

@@ -1,26 +1,27 @@
 import { Express } from 'express';
-import { Connection } from 'typeorm';
+import * as Knex from "knex";
 import app from 'app';
-import { dbConnection } from 'database';
+import { db } from 'database';
 
 export class AppFactory {
   private constructor(
     public instance: Express,
-    public dbConnection: Connection
+    private knex: Knex
   ) { }
 
   static async new(): Promise<AppFactory> {
     return new AppFactory(
       app,
-      await dbConnection(),
+      db
     );
   }
 
-  refreshDatabase(): Promise<void> {
-    return this.dbConnection.synchronize(true);
+  async refreshDatabase(): Promise<void> {
+    await this.knex.migrate.rollback(); // TODO: Implement more efficient way
+    await this.knex.migrate.up();
   }
 
   close(): Promise<void> {
-    return this.dbConnection.close();
+    return this.knex.destroy();
   }
 }

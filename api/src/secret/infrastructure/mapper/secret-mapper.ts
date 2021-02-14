@@ -1,5 +1,4 @@
 import { Secret as SecretModel } from 'secret/domain/model/secret';
-import { TypeormSecretEntity as SecretEntity } from 'secret/infrastructure/typeorm/entity/typeorm-secret.entity';
 
 export class SecretMapper {
   public static toDomain(raw: any): SecretModel {
@@ -13,14 +12,14 @@ export class SecretMapper {
     });
   }
 
-  public static toPersistence(secret: SecretModel): SecretEntity {
-    return new SecretEntity({
+  public static toPersistence(secret: SecretModel): object {
+    return {
       id: secret.id,
       body: secret.body,
       password: secret.password,
       expiresIn: secret.expiresIn,
       createdAt: secret.createdAt,
       updatedAt: secret.updatedAt,
-    });
+    };
   }
 }

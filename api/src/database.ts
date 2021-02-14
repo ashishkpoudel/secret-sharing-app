@@ -1,17 +1,13 @@
-import { createConnection } from 'typeorm';
+import Knex from 'knex';
 import dbConfig from 'config/database';
 
-export const dbConnection = async () => {
-  return createConnection({
-    type: 'postgres',
+export const db = Knex({
+  client: 'pg',
+  connection: {
     host: dbConfig.host,
     port: dbConfig.port,
-    database: dbConfig.database,
-    username: dbConfig.username,
+    user: dbConfig.username,
     password: dbConfig.password,
-    synchronize: dbConfig.synchronize,
-    entities: [
-      __dirname + '/**/*.entity{.ts,.js}',
-    ],
-  });
-};
+    database: dbConfig.database,
+  }
+});

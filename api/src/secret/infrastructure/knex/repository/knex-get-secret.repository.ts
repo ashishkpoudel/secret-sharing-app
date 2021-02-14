@@ -1,12 +1,15 @@
-import { getRepository } from 'typeorm';
-import { TypeormSecretEntity } from 'secret/infrastructure/typeorm/entity/typeorm-secret.entity';
+import { db } from 'database';
 import { GetSecretRepository } from 'secret/application/get-secret/get-secret.repository';
 import { Secret } from 'secret/application/get-secret/secret';
+import { SecretNotFound } from 'secret/domain/exception/secret-not-found';
 
-export class TypeormGetSecretRepository implements GetSecretRepository {
+export class KnexGetSecretRepository implements GetSecretRepository {
   async byId(id: string): Promise<Secret> {
-    const repository = getRepository(TypeormSecretEntity);
-    const secret = await repository.findOneOrFail({ id });
+    const secret = await db('secrets').where({ id }).first();
+
+    if (!secret) {
+      throw new SecretNotFound('Secret not found');
+    }
 
     return new Secret({
       id: secret.id,
