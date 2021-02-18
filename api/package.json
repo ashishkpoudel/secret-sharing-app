@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "inversify": "^5.0.5",
     "knex": "^0.21.17",
+    "knex-db-manager": "^0.7.0",
     "pg": "^8.5.1",
     "postgres-interval": "^3.0.0",
     "reflect-metadata": "^0.1.13",

@@ -11,14 +11,14 @@ services:
     depends_on:
       - postgres
     environment:
-      - PORT=${PORT}
+      - API_PORT=${API_PORT}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
-      - ${PORT}:${PORT}
+      - ${API_PORT}:${API_PORT}
 
   postgres:
     image: postgres:12

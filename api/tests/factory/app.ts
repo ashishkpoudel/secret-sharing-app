@@ -1,18 +1,18 @@
 import { Express } from 'express';
-import * as Knex from "knex";
+import * as Knex from 'knex';
 import app from 'app';
 import { db } from 'database';
 
 export class AppFactory {
   private constructor(
     public instance: Express,
-    private knex: Knex
+    private knex: Knex,
   ) { }
 
   static async new(): Promise<AppFactory> {
     return new AppFactory(
       app,
-      db
+      db,
     );
   }
 
