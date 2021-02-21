@@ -1,6 +1,6 @@
 import { URL } from 'url';
 import interval from 'postgres-interval';
-import { SecretCreated } from 'secret/domain/event/secret-created';
+import { SecretCreated } from 'secret/domain/model/secret-created';
 
 export class Secret {
   private _id: string;

@@ -1,6 +1,6 @@
 import { bcryptService } from 'common';
 import { Secret } from 'secret/domain/model/secret';
-import { SecretRepository } from 'secret/domain/repository/secret.repository';
+import { SecretRepository } from 'secret/domain/model/secret.repository';
 import { CreateSecret } from 'secret/application/create-secret/create-secret';
 
 export class CreateSecretService {
