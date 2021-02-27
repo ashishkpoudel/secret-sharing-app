@@ -1,7 +1,7 @@
+import app from 'app';
 import { db } from 'database';
 import { SecretRepository } from 'secret/domain/model/secret.repository';
 import { Secret } from 'secret/domain/model/secret';
-import { SecretMapper } from 'secret/infrastructure/mapper/secret-mapper';
 import { SecretNotFound } from 'secret/domain/model/secret-not-found';
 
 export class KnexSecretRepository implements SecretRepository {
@@ -12,11 +12,19 @@ export class KnexSecretRepository implements SecretRepository {
       throw new SecretNotFound('Secret not found');
     }
 
-    return SecretMapper.toDomain(secret);
+    return Secret.fromState({
+      id: secret.id,
+      body: secret.body,
+      password: secret.password,
+      expiresIn: secret.expiresIn,
+      createdAt: secret.createdAt,
+      updatedAt: secret.updatedAt,
+    });
   }
 
   async save(secret: Secret): Promise<void> {
-    const data = SecretMapper.toPersistence(secret);
-    await db('secrets').insert(data);
+    for (let event of secret.releaseDomainEvents()) {
+      await app.get('domainMessenger').publish(event);
+    }
   }
 }

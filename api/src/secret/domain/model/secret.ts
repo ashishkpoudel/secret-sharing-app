@@ -1,16 +1,15 @@
 import { URL } from 'url';
 import interval from 'postgres-interval';
 import { SecretCreated } from 'secret/domain/model/secret-created';
+import { AggregateRoot } from 'core/domain/aggregate-root';
 
-export class Secret {
+export class Secret extends AggregateRoot {
   private _id: string;
   private _body: string;
   private _password: string | null;
   private _expiresIn: string;
   private _createdAt: Date;
   private _updatedAt: Date;
-
-  private events: any[] = [];
 
   get id() {
     return this._id;
@@ -59,9 +58,7 @@ export class Secret {
     secret._createdAt = new Date();
     secret._updatedAt = new Date();
 
-    secret.events.push(
-      new SecretCreated(id)
-    );
+    secret.addDomainEvent(new SecretCreated(secret));
 
     return secret;
   }
@@ -77,7 +74,14 @@ export class Secret {
     return secret;
   }
 
-  public releaseEvents() {
-    return this.events;
+  public toPersistence(): object {
+    return {
+      id: this.id,
+      body: this.body,
+      password: this.password,
+      expiresIn: this.expiresIn,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    };
   }
 }

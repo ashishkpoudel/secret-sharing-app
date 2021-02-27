@@ -19,7 +19,5 @@ export class CreateSecretService {
     });
 
     await this.secretRepository.save(secret);
-
-    secret.releaseEvents() // TODO: Dispatch Events
   }
 }
