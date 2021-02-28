@@ -1,6 +1,5 @@
 import { Express } from 'express';
 import * as Knex from 'knex';
-import 'index';
 import app from 'app';
 import { db } from 'database';
 

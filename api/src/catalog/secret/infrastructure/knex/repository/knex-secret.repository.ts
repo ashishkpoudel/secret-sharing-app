@@ -1,8 +1,7 @@
-import app from 'app';
 import { db } from 'database';
-import { SecretRepository } from 'secret/domain/model/secret.repository';
-import { Secret } from 'secret/domain/model/secret';
-import { SecretNotFound } from 'secret/domain/model/secret-not-found';
+import { SecretRepository } from 'catalog/secret/domain/model/secret.repository';
+import { Secret } from 'catalog/secret/domain/model/secret';
+import { SecretNotFound } from 'catalog/secret/domain/model/secret-not-found';
 
 export class KnexSecretRepository implements SecretRepository {
   async getById(id: string): Promise<Secret> {
@@ -23,8 +22,6 @@ export class KnexSecretRepository implements SecretRepository {
   }
 
   async save(secret: Secret): Promise<void> {
-    for (let event of secret.releaseDomainEvents()) {
-      await app.get('domainMessenger').publish(event);
-    }
+    await db('secrets').insert(secret.toPersistence());
   }
 }

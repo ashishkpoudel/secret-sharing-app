@@ -1,7 +1,7 @@
 import express from 'express';
 import { validateRequest } from 'common/infrastructure/express/middleware/validate-request';
-import { SecretRequest } from 'secret/infrastructure/express/request/secret.request';
-import * as secretController from 'secret/infrastructure/express/controller/secret.controller';
+import { SecretRequest } from 'catalog/secret/infrastructure/express/request/secret.request';
+import * as secretController from 'catalog/secret/infrastructure/express/controller/secret.controller';
 
 const secretRouter = express.Router();
 
