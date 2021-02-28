@@ -1,7 +1,7 @@
 import { bcryptService } from 'common';
-import { Secret } from 'catalog/secret/domain/model/secret';
-import { SecretRepository } from 'catalog/secret/domain/model/secret.repository';
-import { CreateSecret } from 'catalog/secret/application/create-secret/create-secret';
+import { Secret } from 'secret/domain/model/secret';
+import { SecretRepository } from 'secret/domain/model/secret.repository';
+import { CreateSecret } from 'secret/application/create-secret/create-secret';
 
 export class CreateSecretService {
   private readonly secretRepository: SecretRepository;

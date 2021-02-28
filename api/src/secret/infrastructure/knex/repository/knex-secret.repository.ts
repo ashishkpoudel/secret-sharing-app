@@ -1,7 +1,7 @@
 import { db } from 'database';
-import { SecretRepository } from 'catalog/secret/domain/model/secret.repository';
-import { Secret } from 'catalog/secret/domain/model/secret';
-import { SecretNotFound } from 'catalog/secret/domain/model/secret-not-found';
+import { SecretRepository } from 'secret/domain/model/secret.repository';
+import { Secret } from 'secret/domain/model/secret';
+import { SecretNotFound } from 'secret/domain/model/secret-not-found';
 
 export class KnexSecretRepository implements SecretRepository {
   async getById(id: string): Promise<Secret> {

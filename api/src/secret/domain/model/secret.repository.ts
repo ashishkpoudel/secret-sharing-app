@@ -1,4 +1,4 @@
-import { Secret } from 'catalog/secret/domain/model/secret';
+import { Secret } from 'secret/domain/model/secret';
 
 export interface SecretRepository {
   readonly getById: (id: string) => Promise<Secret>;

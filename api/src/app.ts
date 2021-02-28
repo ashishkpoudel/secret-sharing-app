@@ -7,7 +7,7 @@ import { DomainEventMessenger } from 'core/domain/domain-event-messenger';
 import { globalErrorHandler } from 'common/infrastructure/express/middleware/global-error-handler';
 import { validationErrorHandler } from 'common/infrastructure/express/middleware/validation-error-handler';
 import { commonRouter } from 'common/infrastructure/express/route';
-import { secretRouter } from 'catalog/secret/infrastructure/express/route';
+import { secretRouter } from 'secret/infrastructure/express/route';
 
 const app = express();
 

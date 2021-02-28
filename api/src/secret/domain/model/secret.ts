@@ -1,6 +1,6 @@
 import { URL } from 'url';
 import interval from 'postgres-interval';
-import { SecretCreated } from 'catalog/secret/domain/model/secret-created';
+import { SecretCreated } from 'secret/domain/model/secret-created';
 import { AggregateRoot } from 'core/domain/aggregate-root';
 
 export class Secret extends AggregateRoot {
