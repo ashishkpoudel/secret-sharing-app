@@ -8,6 +8,9 @@ export class AggregateRoot {
   }
 
   public releaseDomainEvents() {
+    const events = this._domainEvents;
+    this._domainEvents = [];
+
     return this._domainEvents;
   }
 }

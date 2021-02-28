@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import interval from 'postgres-interval';
 import { SecretCreated } from 'secret/domain/model/secret-created';
 import { AggregateRoot } from 'core/domain/aggregate-root';
@@ -45,10 +44,6 @@ export class Secret extends AggregateRoot {
     return this._updatedAt;
   }
 
-  public getSharingLink(baseUrl: string): string {
-    return new URL(`/secrets/${this.id}`, baseUrl).toString();
-  }
-
   public static create({ id, body, password, expiresIn }): Secret {
     const secret = new Secret();
     secret._id = id;
@@ -58,7 +53,9 @@ export class Secret extends AggregateRoot {
     secret._createdAt = new Date();
     secret._updatedAt = new Date();
 
-    secret.addDomainEvent(new SecretCreated(secret));
+    secret.addDomainEvent(
+      new SecretCreated(secret.id),
+    );
 
     return secret;
   }
@@ -74,7 +71,7 @@ export class Secret extends AggregateRoot {
     return secret;
   }
 
-  public toPersistence(): object {
+  public toState(): object {
     return {
       id: this.id,
       body: this.body,

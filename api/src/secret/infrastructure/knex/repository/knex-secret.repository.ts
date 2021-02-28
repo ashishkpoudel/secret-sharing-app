@@ -22,6 +22,6 @@ export class KnexSecretRepository implements SecretRepository {
   }
 
   async save(secret: Secret): Promise<void> {
-    await db('secrets').insert(secret.toPersistence());
+    await db('secrets').insert(secret.toState());
   }
 }
