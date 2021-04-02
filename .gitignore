@@ -38,3 +38,5 @@ lerna-debug.log*
 tsconfig.tsbuildinfo
 tsconfig.build.tsbuildinfo
 
+/api/nbproject/private/
+/ui/nbproject/private/

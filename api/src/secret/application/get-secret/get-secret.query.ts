@@ -1,3 +1,3 @@
-export interface GetSecretRepository {
+export interface GetSecretQuery {
   readonly byId: (id: string) => Promise<any>;
 }

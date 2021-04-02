@@ -3,7 +3,6 @@ import 'reflect-metadata';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-import { DomainEventMessenger } from 'core/domain/domain-event-messenger';
 import { globalErrorHandler } from 'common/infrastructure/express/middleware/global-error-handler';
 import { validationErrorHandler } from 'common/infrastructure/express/middleware/validation-error-handler';
 import { commonRouter } from 'common/infrastructure/express/route';
@@ -17,11 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 dotenv.config({ path: '.env' });
-
-/**
- * Domain Event Messenger
- */
-app.set('domainMessenger', new DomainEventMessenger());
 
 /**
  * App routes.

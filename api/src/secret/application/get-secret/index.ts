@@ -1,5 +1,5 @@
-import { KnexGetSecretRepository } from 'secret/infrastructure/knex/repository/knex-get-secret.repository';
+import { KnexGetSecretQuery } from 'secret/infrastructure/knex/repository/knex-get-secret.query';
 
-const getSecret = new KnexGetSecretRepository();
+const getSecret = new KnexGetSecretQuery();
 
 export { getSecret };

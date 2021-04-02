@@ -1,8 +1,6 @@
 import interval from 'postgres-interval';
-import { SecretCreated } from 'secret/domain/model/secret-created';
-import { AggregateRoot } from 'core/domain/aggregate-root';
 
-export class Secret extends AggregateRoot {
+export class Secret {
   private _id: string;
   private _body: string;
   private _password: string | null;
@@ -52,11 +50,6 @@ export class Secret extends AggregateRoot {
     secret.expiresIn = expiresIn;
     secret._createdAt = new Date();
     secret._updatedAt = new Date();
-
-    secret.addDomainEvent(
-      new SecretCreated(secret.id),
-    );
-
     return secret;
   }
 

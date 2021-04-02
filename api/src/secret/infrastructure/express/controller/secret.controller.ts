@@ -4,17 +4,19 @@ import { createSecretService } from 'secret/application/create-secret';
 import { CreateSecret } from 'secret/application/create-secret/create-secret';
 import { getSecret } from 'secret/application';
 
-export const postSecret = async (req: Request, res: Response) => {
+export const postSecret = async (request: Request, response: Response) => {
   const id = uuid4();
+  const { body } = request;
+
   const command = new CreateSecret({
     id,
-    body: 'this is a body',
-    password: 'secretSauce',
-    expiresIn: '03:02:01',
+    body: body.body,
+    password: body.password,
+    expiresIn: body.expiresIn,
   });
 
   await createSecretService.execute(command);
 
   const secret = await getSecret.byId(id);
-  res.json(secret);
+  response.json(secret);
 };

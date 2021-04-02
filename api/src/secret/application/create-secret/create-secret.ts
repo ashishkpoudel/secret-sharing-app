@@ -4,7 +4,7 @@ export class CreateSecret {
   public readonly password: string | null;
   public readonly expiresIn: string;
 
-  constructor(props: Partial<CreateSecret>) {
+  constructor(props: CreateSecret) {
     Object.assign(this, props);
   }
 }
