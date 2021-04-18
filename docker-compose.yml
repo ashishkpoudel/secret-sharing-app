@@ -29,3 +29,17 @@ services:
     command: postgres -p ${DB_PORT}
     ports:
       - ${DB_PORT}:${DB_PORT}
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - "./ui:/var/www"
+    depends_on:
+      - api
+    environment:
+      - API_PORT=${API_PORT}
+    ports:
+      - ${UI_PORT}:4200

@@ -15,4 +15,4 @@ CMD ["npm", "run", "start"]
 FROM base as development
 WORKDIR /var/www
 COPY --from=base /base ./
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start"]
