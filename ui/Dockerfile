@@ -1,4 +1,4 @@
-FROM node:14.3.0-alpine3.11 as base
+FROM node:14.17.0-alpine3.11 as base
 WORKDIR /base
 COPY package*.json tsconfig*.json ./
 RUN npm install
