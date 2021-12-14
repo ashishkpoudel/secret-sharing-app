@@ -8,10 +8,6 @@ describe('Health check e2e', () => {
     app = await AppFactory.new();
   });
 
-  afterEach(async () => {
-    await app.refreshDatabase();
-  });
-
   it('GET /health-check returns 200 ok', () => {
     return request(app.instance)
       .get('/health-check')

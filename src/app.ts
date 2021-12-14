@@ -1,6 +1,7 @@
 import express from 'express';
 import 'reflect-metadata';
 import dotenv from 'dotenv';
+import { resolve } from 'path';
 
 import { globalErrorHandler } from 'common/http/middleware/global-error-handler';
 import { commonRouter } from 'common/http/route';
@@ -14,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-dotenv.config({ path: '.env' });
+dotenv.config({ path: resolve(__dirname, '../.env') });
 
 /**
  * App routes.
