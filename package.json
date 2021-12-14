@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon -r tsconfig-paths/register src/main.ts",
+    "start:dev": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:watch": "nodemon -r tsconfig-paths/register src/main.ts",
     "build": "tsc -p tsconfig.json",
     "test": "jest --config ./jest.json --runInBand",
     "knex": "ts-node -r tsconfig-paths/register ./node_modules/knex/bin/cli.js"
@@ -13,8 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
+    "knex": "^0.95.14",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "uuid": "^8.3.1"
   },

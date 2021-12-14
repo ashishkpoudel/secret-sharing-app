@@ -8,7 +8,7 @@ describe('Secret e2e', () => {
     app = await AppFactory.new();
   });
 
-  afterEach(async () => {
+  beforeEach(async () => {
     await app.refreshDatabase();
   });
 
