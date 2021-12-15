@@ -17,10 +17,11 @@ export class AppFactory {
   }
 
   async refreshDatabase(): Promise<void> {
-    return Promise.resolve();
+    await this.knex.migrate.rollback();
+    await this.knex.migrate.latest();
   }
 
-  close(): Promise<void> {
-    return Promise.resolve();
+  async close(): Promise<void> {
+    await this.knex.destroy();
   }
 }

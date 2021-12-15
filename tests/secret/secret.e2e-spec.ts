@@ -30,6 +30,10 @@ describe('Secret e2e', () => {
     );
   });
 
+  it.skip('GET /secrets/:id should fetch secret', async () => {
+    // todo
+  });
+
   afterAll(async() => {
     await app.close();
   });
